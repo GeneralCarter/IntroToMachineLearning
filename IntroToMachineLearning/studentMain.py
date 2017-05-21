@@ -11,7 +11,7 @@
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture, output_image
 from ClassifyNB import classify
-
+from ClassifyNB import NBAccuracy
 import numpy as np
 import pylab as pl
 
@@ -36,6 +36,10 @@ clf = classify(features_train, labels_train)
 ### draw the decision boundary with the text points overlaid
 prettyPicture(clf, features_test, labels_test)
 output_image("test.png", "png", open("test.png", "rb").read())
+
+accuracy = NBAccuracy(features_train, labels_train, features_test, labels_test)
+print (accuracy)
+#print (clf.score(features_test, labels_test))
 
 
 
